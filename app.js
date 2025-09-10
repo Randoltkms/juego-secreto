@@ -1,6 +1,6 @@
 
 
-let numeroSecreto = generarNumeroSecreto();
+let numeroSecreto = 0;
 let numeroDeIntentos = 1;
 let listaNumerosSorteados = [];
 let numeroMaximo = 10;
@@ -18,7 +18,7 @@ function verificarIntento() {
     console.log(numeroDeIntentos);
     if (numeroDeUsuario === numeroSecreto) {
         asignarTextoElemento(
-            'p',
+            '.texto__parrafo',
             `🎉 Acertaste el número secreto en ${numeroDeIntentos} ${(numeroDeIntentos === 1 ? 'vez' : 'veces')}`
         );
 
@@ -27,9 +27,9 @@ function verificarIntento() {
     } else {
         //El usuario no adivinó el número secreto
         if (numeroDeUsuario < numeroSecreto) {
-            asignarTextoElemento('p', '🔼 El número secreto es mayor');
+            asignarTextoElemento('.texto__parrafo', '🔼 El número secreto es mayor');
         } else {
-            asignarTextoElemento('p', '🔽 El número secreto es menor');
+            asignarTextoElemento('.texto__parrafo', '🔽 El número secreto es menor');
         }
 
         numeroDeIntentos++;
@@ -48,7 +48,7 @@ function generarNumeroSecreto() {
     console.log(listaNumerosSorteados);
     //Si ha sorteamos todos los numeros 
     if (listaNumerosSorteados.length === numeroMaximo) {
-        asignarTextoElemento('p', 'Ya se han generado todos los números posibles, ¡Juego terminado!');
+        asignarTextoElemento('.texto__parrafo', 'Ya se han generado todos los números posibles, ¡Juego terminado!');
 
     } else {
 
@@ -70,9 +70,9 @@ function condicionesIniciales() {
 
     // Inicializar el juego
     asignarTextoElemento('h1', 'Juego del número secreto');
-    asignarTextoElemento('p', 'Indica un número del 1 al ${numeroMaximo}');
+    asignarTextoElemento('.texto__parrafo', `Indica un número del 1 al ${numeroMaximo}`);
     numeroSecreto = generarNumeroSecreto();
-    intentos = 1;
+    numeroDeIntentos = 1;
 
 }
 
@@ -91,6 +91,8 @@ function reiniciarJuego() {
 }
 
 condicionesIniciales();
+
+
 
 
 
